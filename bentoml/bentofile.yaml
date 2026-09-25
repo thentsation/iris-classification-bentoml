@@ -1,8 +1,8 @@
-service: "service.py:IrisClassifier"
+service: "src.services.iris_service:IrisClassifierService"
 labels:
-  owner: bentoml-team
-  project: gallery
+  owner: thentsation
+  project: iris-classification-bentoml
 include:
-  - "*.py"
+  - "src/**/*.py"
 python:
-  requirements_txt: "./requirements.txt"
+  requirements_txt: "./config/requirements.txt"
