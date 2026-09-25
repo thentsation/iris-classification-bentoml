@@ -1,0 +1,8 @@
+services:
+  iris:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: iris-classification-bentoml
+    ports:
+      - '3000:3000'
