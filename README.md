@@ -1,143 +1,63 @@
 # Iris Classifier Service
 
-This project implements an iris classification service using BentoML and scikit-learn, following SOLID principles.
+[![Python CI](https://github.com/thentsation/iris-classification-bentoml/actions/workflows/pipeline_python.yaml/badge.svg)](https://github.com/thentsation/iris-classification-bentoml/actions/workflows/pipeline_python.yaml)
+[![Docker CI/CD](https://github.com/thentsation/iris-classification-bentoml/actions/workflows/pipeline_docker.yaml/badge.svg)](https://github.com/thentsation/iris-classification-bentoml/actions/workflows/pipeline_docker.yaml)
 
-## Project Structure
+> Leia em [português](README.pt-br.md).
 
-```
+An Iris classification service built with [BentoML](https://www.bentoml.com/) and scikit-learn, structured in layers (data → model → service) following SOLID principles.
+
+An in-depth write-up of the productization of this project is available in [ARTIGO.md](ARTIGO.md) (pt-br) / [ARTIGO.en-us.md](ARTIGO.en-us.md) (en-us).
+
+## Project structure
+
+```text
 src/
-├── models/               # Model layer
-│   ├── __init__.py
-│   ├── interfaces.py     # Abstract interfaces for models
-│   ├── iris_model.py     # Iris model implementation
-│   └── model_factory.py  # Factory for model creation
-├── services/             # Service layer
-│   ├── __init__.py
-│   ├── interfaces.py     # Service interfaces
-│   └── iris_service.py   # Iris service implementation
-├── data/                 # Data layer
-│   ├── __init__.py
-│   ├── data_loader.py    # Data loading
-│   └── data_preprocessor.py  # Data preprocessing
-├── config/               # Configurations
-│   └── config.py
-└── main.py               # Entry point
+├── data/                  # DataLoader, DataPreprocessor
+├── models/                 # ModelInterface, IrisModel (SVC), ModelFactory
+├── services/                # ClassifierServiceInterface, IrisClassifier (plain, testable)
+│                             and IrisClassifierService (the @bentoml.service wrapper)
+├── config/config.py         # Config (model type/version)
+└── main.py                  # trains the model and saves it to the BentoML model store
 ```
 
-## Applied SOLID Principles
+`IrisClassifier` holds the actual classification logic and accepts an injected `ModelInterface`, so it's tested without the BentoML service runtime. `IrisClassifierService` is a thin `@bentoml.service`-decorated wrapper around it that exposes the HTTP API.
 
-1. **Single Responsibility Principle (SRP)**
-   - Each class has a single responsibility
-   - Clear separation between data, model, and service
+## Getting started
 
-2. **Open/Closed Principle (OCP)**
-   - Extendable to new models via ModelFactory
-   - Interfaces allow new implementations
-
-3. **Liskov Substitution Principle (LSP)**
-   - Well-defined interfaces for models and services
-   - Implementations are interchangeable
-
-4. **Interface Segregation Principle (ISP)**
-   - Small and specific interfaces
-   - Clear separation of responsibilities
-
-5. **Dependency Inversion Principle (DIP)**
-   - Dependencies injected via interfaces
-   - High testability and low coupling
-
-## Install dependencies:
 ```bash
-pip install -r requirements.txt
+make install    # creates .venv and installs deps
+make train      # trains the SVC model and saves it to the BentoML model store
+make serve      # trains (if needed) and starts `bentoml serve` with --reload
 ```
 
-## How to Use
+- Swagger UI: http://localhost:3000/docs
+- API endpoint: `POST http://localhost:3000/classify`
+- Readiness probe: `GET http://localhost:3000/readyz`
 
-1. **Train the Model**:
+Run with Docker instead (the image trains the model at build time):
+
 ```bash
-python src/main.py
+make docker-build
+make docker-run
 ```
 
-2. **Start the Server**:
+## Development
+
 ```bash
-bentoml serve src.services.iris_service:IrisClassifierService --reload
+make test        # pytest
+make coverage     # pytest with coverage report
+make lint         # ruff check
+make format       # ruff format
+make typecheck    # mypy
 ```
 
-3. **Make Predictions**:
+CI runs ruff, pytest (coverage gate), mypy and pip-audit on every push/PR, plus a scheduled daily run. Docker images are built, scanned with Trivy, and published to GHCR on `main`. Dependabot keeps pip, the Docker base image, and GitHub Actions up to date, with patch/minor bumps auto-merged. Releases are tagged automatically with [python-semantic-release](https://python-semantic-release.readthedocs.io/).
 
-## API Endpoints
+## SOLID principles applied
 
-- **Swagger UI**: http://localhost:3000/docs
-- **API Endpoint**: http://localhost:3000/classify
-- **Metrics**: http://localhost:3000/metrics# Iris Classifier Service
-
-This project implements an iris classification service using BentoML and scikit-learn, following SOLID principles.
-
-## Project Structure
-
-```
-src/
-├── models/               # Model layer
-│   ├── __init__.py
-│   ├── interfaces.py     # Abstract interfaces for models
-│   ├── iris_model.py     # Iris model implementation
-│   └── model_factory.py  # Factory for model creation
-├── services/             # Service layer
-│   ├── __init__.py
-│   ├── interfaces.py     # Service interfaces
-│   └── iris_service.py   # Iris service implementation
-├── data/                 # Data layer
-│   ├── __init__.py
-│   ├── data_loader.py    # Data loading
-│   └── data_preprocessor.py  # Data preprocessing
-├── config/               # Configurations
-│   └── config.py
-└── main.py               # Entry point
-```
-
-## Applied SOLID Principles
-
-1. **Single Responsibility Principle (SRP)**
-   - Each class has a single responsibility
-   - Clear separation between data, model, and service
-
-2. **Open/Closed Principle (OCP)**
-   - Extendable to new models via ModelFactory
-   - Interfaces allow new implementations
-
-3. **Liskov Substitution Principle (LSP)**
-   - Well-defined interfaces for models and services
-   - Implementations are interchangeable
-
-4. **Interface Segregation Principle (ISP)**
-   - Small and specific interfaces
-   - Clear separation of responsibilities
-
-5. **Dependency Inversion Principle (DIP)**
-   - Dependencies injected via interfaces
-   - High testability and low coupling
-
-## Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-## How to Use
-
-1. **Train the Model**:
-```bash
-python src/main.py
-```
-
-2. **Start the Server**:
-```bash
-bentoml serve src.services.iris_service:IrisClassifierService --reload
-```
-
-3. **Make Predictions**:
-
-## API Endpoints
-
-- **Swagger UI**: http://localhost:3000/docs
-- **API Endpoint**: http://localhost:3000/classify
-- **Metrics**: http://localhost:3000/metrics
+1. **SRP** — data loading, preprocessing, model, and the HTTP layer are all separate classes.
+2. **OCP** — new model types plug into `ModelFactory` without touching existing code.
+3. **LSP** — any `ModelInterface` implementation can replace `IrisModel`.
+4. **ISP** — small, focused interfaces (`ModelInterface`, `ClassifierServiceInterface`).
+5. **DIP** — `IrisClassifier` depends on the `ModelInterface` abstraction, injected at construction time, not on a concrete model or the BentoML runtime.
