@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.3 (2026-09-26)
+
+### Bug Fixes
+
+- Broaden Trivy's pip/_vendor skip-dirs to a recursive glob
+  ([`768e490`](https://github.com/thentsation/iris-classification-bentoml/commit/768e490d00764b22e28076fd546bc055fdd5f569))
+
+
 ## v1.0.2 (2026-09-26)
 
 ### Bug Fixes
