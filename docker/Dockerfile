@@ -21,6 +21,8 @@ RUN python src/main.py
 RUN useradd --create-home appuser
 USER appuser
 
+ENV PYTHONPATH=/app/src
+
 EXPOSE 3000
 
 CMD ["bentoml", "serve", "src.services.iris_service:IrisClassifierService", "--production", "--host", "0.0.0.0", "--port", "3000"]
