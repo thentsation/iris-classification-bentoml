@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.2 (2026-09-26)
+
+### Bug Fixes
+
+- Set PYTHONPATH so bentoml serve resolves bare src imports
+  ([`420ec2a`](https://github.com/thentsation/iris-classification-bentoml/commit/420ec2ac413ebd8ffcba5858da93e5309d716099))
+
+
 ## v1.0.1 (2026-09-25)
 
 ### Bug Fixes
