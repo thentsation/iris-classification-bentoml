@@ -2,6 +2,20 @@
 
 <!-- version list -->
 
+## v1.0.5 (2026-09-28)
+
+### Bug Fixes
+
+- **ci**: Open lockfile PRs with RELEASE_PAT so CI runs on them
+  ([`75385d6`](https://github.com/thentsation/iris-classification-bentoml/commit/75385d612c9a00feb9ee23ab3fbdca2d9f091a9d))
+
+### Chores
+
+- **deps**: Update joblib requirement in /config
+  ([#10](https://github.com/thentsation/iris-classification-bentoml/pull/10),
+  [`b1f67fd`](https://github.com/thentsation/iris-classification-bentoml/commit/b1f67fddc3560828907c58fd4643fd4e60793fd3))
+
+
 ## v1.0.4 (2026-09-28)
 
 ### Bug Fixes
