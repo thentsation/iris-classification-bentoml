@@ -2,6 +2,20 @@
 
 <!-- version list -->
 
+## v1.0.4 (2026-09-28)
+
+### Bug Fixes
+
+- Use RELEASE_PAT so dependabot auto-merge can write to PRs
+  ([`f844f1d`](https://github.com/thentsation/iris-classification-bentoml/commit/f844f1d5db510146be94305e5d65826eed52fc77))
+
+### Chores
+
+- **deps**: Bump ruff from 0.16.3 to 0.16.9 in /config
+  ([#11](https://github.com/thentsation/iris-classification-bentoml/pull/11),
+  [`cecc9c1`](https://github.com/thentsation/iris-classification-bentoml/commit/cecc9c1dafefdf6cb89643a6fa8f3a09a6f35751))
+
+
 ## v1.0.3 (2026-09-26)
 
 ### Bug Fixes
