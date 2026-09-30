@@ -35,7 +35,7 @@ docker-build:
 	docker build -f docker/Dockerfile -t iris-classification-bentoml .
 
 docker-run:
-	docker run --rm -p 3000:3000 iris-classification-bentoml
+	docker run --rm -p 3001:3000 iris-classification-bentoml
 
 clean:
 	find . -type d -name __pycache__ -not -path './$(VENV)/*' -exec rm -rf {} +
