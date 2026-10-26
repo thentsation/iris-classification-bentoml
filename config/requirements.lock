@@ -201,6 +201,8 @@ tornado==6.6
     # via kantoku
 typing-extensions==4.16.0
     # via
+    #   aiohttp
+    #   aiosignal
     #   anyio
     #   opentelemetry-api
     #   opentelemetry-sdk
@@ -208,6 +210,7 @@ typing-extensions==4.16.0
     #   pydantic
     #   pydantic-core
     #   rich-toolkit
+    #   starlette
     #   typing-inspection
 typing-inspection==0.4.4
     # via pydantic
