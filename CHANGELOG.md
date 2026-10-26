@@ -2,6 +2,71 @@
 
 <!-- version list -->
 
+## v1.0.6 (2026-10-26)
+
+### Bug Fixes
+
+- **deps**: Upgrade lockfile and use --upgrade in lockfile workflow
+  ([#27](https://github.com/thentsation/iris-classification-bentoml/pull/27),
+  [`ee0e82b`](https://github.com/thentsation/iris-classification-bentoml/commit/ee0e82b3c0efe10ba6aa8dad076d38ed52374f2c))
+
+- **deps**: Use --upgrade when regenerating the lockfile
+  ([#27](https://github.com/thentsation/iris-classification-bentoml/pull/27),
+  [`ee0e82b`](https://github.com/thentsation/iris-classification-bentoml/commit/ee0e82b3c0efe10ba6aa8dad076d38ed52374f2c))
+
+### Chores
+
+- **ci**: Bump astral-sh/setup-uv from 10.2.0 to 10.3.0
+  ([#23](https://github.com/thentsation/iris-classification-bentoml/pull/23),
+  [`94ed221`](https://github.com/thentsation/iris-classification-bentoml/commit/94ed221fc4d32632720b526a5540aacb9fedcb7e))
+
+- **ci**: Bump astral-sh/setup-uv from 10.3.0 to 10.3.2
+  ([#26](https://github.com/thentsation/iris-classification-bentoml/pull/26),
+  [`3f054ff`](https://github.com/thentsation/iris-classification-bentoml/commit/3f054ffe2253612487ef7f24052a8f2129d04413))
+
+- **deps**: Bump ruff from 0.16.10 to 0.17.0 in /config
+  ([#22](https://github.com/thentsation/iris-classification-bentoml/pull/22),
+  [`bc97677`](https://github.com/thentsation/iris-classification-bentoml/commit/bc97677738465275a22697ab85541a752304e267))
+
+- **deps**: Bump ruff from 0.17.0 to 0.17.1 in /config
+  ([#24](https://github.com/thentsation/iris-classification-bentoml/pull/24),
+  [`fa2c7d7`](https://github.com/thentsation/iris-classification-bentoml/commit/fa2c7d76194a0fb6d83f441fd2cae84b1c59f0ee))
+
+- **deps**: Bump ruff from 0.17.1 to 0.17.2 in /config
+  ([#25](https://github.com/thentsation/iris-classification-bentoml/pull/25),
+  [`8b75662`](https://github.com/thentsation/iris-classification-bentoml/commit/8b75662565bbedd789a1c16906a8d5d3860aa46d))
+
+- **deps**: Refresh pip-compile outputs
+  ([#18](https://github.com/thentsation/iris-classification-bentoml/pull/18),
+  [`61b3bb6`](https://github.com/thentsation/iris-classification-bentoml/commit/61b3bb6409aa0f09f96dba7b1bae051a80a420b6))
+
+- **deps**: Update dependency mypy to v2.4.0
+  ([#16](https://github.com/thentsation/iris-classification-bentoml/pull/16),
+  [`267b044`](https://github.com/thentsation/iris-classification-bentoml/commit/267b044e5b0490a7ae4458396f714eddedf7076e))
+
+- **deps**: Update dependency ruff to v0.16.10
+  ([#15](https://github.com/thentsation/iris-classification-bentoml/pull/15),
+  [`ab9bbc6`](https://github.com/thentsation/iris-classification-bentoml/commit/ab9bbc60661d9c58fd37d9650a695c55599d872a))
+
+- **deps**: Update lockfile
+  ([#27](https://github.com/thentsation/iris-classification-bentoml/pull/27),
+  [`ee0e82b`](https://github.com/thentsation/iris-classification-bentoml/commit/ee0e82b3c0efe10ba6aa8dad076d38ed52374f2c))
+
+- **deps**: Update lockfile
+  ([#21](https://github.com/thentsation/iris-classification-bentoml/pull/21),
+  [`e2a8edc`](https://github.com/thentsation/iris-classification-bentoml/commit/e2a8edc504f8a6913aaf510d1c4f7db7168d04d3))
+
+### Continuous Integration
+
+- Pipeline da Shared Library da plataforma e Renovate
+  ([#14](https://github.com/thentsation/iris-classification-bentoml/pull/14),
+  [`560df36`](https://github.com/thentsation/iris-classification-bentoml/commit/560df36b5e8643ece6aa208435527561e2ea1e3d))
+
+- Remove workflow notify-portfolio (token sem acesso; o portfolio atualiza pelo cron diário)
+  ([#20](https://github.com/thentsation/iris-classification-bentoml/pull/20),
+  [`358158d`](https://github.com/thentsation/iris-classification-bentoml/commit/358158d49e15d04848e26eaae3d821b89366c9d7))
+
+
 ## v1.0.5 (2026-09-28)
 
 ### Bug Fixes
